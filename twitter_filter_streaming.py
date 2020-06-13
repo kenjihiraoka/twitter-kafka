@@ -90,7 +90,7 @@ def stream_connect(auth):
             pprint(json.loads(response_line))
 
 
-bearer_token = BearerTokenAuth(twitter_consumer_key="wnInKrI91Uo6chzyQ6Y37ac91", twitter_consumer_secret="ojQfo8FWWNrQs69dcKToZNZCN5sRDRKLXsIl6uTRzwySXSxayO")
+bearer_token = BearerTokenAuth(twitter_consumer_key=env.api_key, twitter_consumer_secret=env.api_secret_key)
 
 
 def setup_rules(auth):
