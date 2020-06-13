@@ -1,6 +1,6 @@
 ########################## KAFKA ##########################
 .PHONY: create-kafka
-start-kafka:
+create-kafka:
 	@sudo docker-compose -f kafka/docker-compose.yml up -d --build
 
 .PHONY: kill-kafka
