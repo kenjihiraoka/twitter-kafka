@@ -14,3 +14,12 @@ create-topic:
 .PHONY: delete-topic
 delete-topic:
 	@sudo docker-compose -f kafka/docker-compose.yml exec broker kafka-topics --delete --bootstrap-server localhost:9092 --topic ${topic}
+
+########################### NIFI ###########################
+.PHONY: create-nifi
+create-nifi:
+	@sudo docker-compose -f nifi/docker-compose.yml up -d --build
+
+.PHONY: kill-nifi
+kill-nifi:
+	@sudo docker-compose -f nifi/docker-compose.yml down
