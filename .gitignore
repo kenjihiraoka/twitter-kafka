@@ -1,2 +1,4 @@
 .idea/
 kafka/logs/
+twitter_env.py
+__pycache__/
