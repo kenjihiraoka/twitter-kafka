@@ -4,7 +4,7 @@ services:
   zookeeper:
     image: confluentinc/cp-zookeeper:5.5.0
     hostname: zookeeper
-    container_name: zookeeper
+    container_name: kafka_zookeeper
     ports:
       - "2181:2181"
     environment:
@@ -17,7 +17,7 @@ services:
   broker:
     image: confluentinc/cp-kafka:5.5.0
     hostname: broker
-    container_name: broker
+    container_name: kafka_broker
     depends_on:
       - zookeeper
     ports:
@@ -36,7 +36,7 @@ services:
   schema-registry:
     image: confluentinc/cp-schema-registry:5.5.0
     hostname: schema-registry
-    container_name: schema-registry
+    container_name: kafka_schema-registry
     depends_on:
       - zookeeper
       - broker
@@ -55,7 +55,7 @@ services:
     ports:
       - 8082:8082
     hostname: rest-proxy
-    container_name: rest-proxy
+    container_name: kafka_rest-proxy
     environment:
       KAFKA_REST_HOST_NAME: rest-proxy
       KAFKA_REST_BOOTSTRAP_SERVERS: 'broker:29092'
@@ -64,7 +64,7 @@ services:
 
   kafka-topics-ui:
     image: landoop/kafka-topics-ui:0.9.4
-    hostname: kafka-topics-ui
+    hostname: kafka_topics_ui
     ports:
       - "8000:8000"
     environment:
