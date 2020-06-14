@@ -1,0 +1,1 @@
+from producer.kafka_producer import KafkaEventProducer
