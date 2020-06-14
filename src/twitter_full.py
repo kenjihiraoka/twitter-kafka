@@ -14,11 +14,12 @@ STREAM_URL = "https://api.twitter.com/labs/1/tweets/stream/sample"
 class TwitterFull:
     @staticmethod
     def stream_connect(authentication):
-        response = requests.get(STREAM_URL, auth=authentication,
-                                headers={"User-Agent": "TwitterDevSampledStreamQuickStartPython"}, stream=True)
-        for response_line in response.iter_lines():
-            if response_line:
-                pprint(json.loads(response_line))
+        with requests.get(STREAM_URL, auth=authentication,
+                          headers={"User-Agent": "TwitterDevSampledStreamQuickStartPython"},
+                          stream=True) as response:
+            for response_line in response.iter_lines(chunk_size=20):
+                if response_line:
+                    pprint(json.loads(response_line))
 
 
 if __name__ == "__main__":
